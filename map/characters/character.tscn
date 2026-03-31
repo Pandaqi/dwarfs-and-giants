@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://dmxoknijp6v2j"]
+
+[ext_resource type="Script" uid="uid://dqj1u2od2qywi" path="res://map/characters/character.gd" id="1_nnvoy"]
+[ext_resource type="Material" uid="uid://cavxytdwavtuw" path="res://puzzle-framework/effects/shaders/sprite_outline_material.tres" id="2_1mkvr"]
+[ext_resource type="Texture2D" uid="uid://bxka770w3sct3" path="res://map/characters/dwarfs-giants-spritesheet.png" id="2_klju5"]
+[ext_resource type="Texture2D" uid="uid://bv02mradlx8ga" path="res://puzzle-framework/effects/sprites/white-circle-blurred.png" id="2_qxwyv"]
+[ext_resource type="Script" uid="uid://ck6nrpdiy8vqf" path="res://puzzle-framework/effects/squasher_stretcher.gd" id="3_klju5"]
+[ext_resource type="FontFile" uid="uid://bed5pyde1dpwn" path="res://ui/Norse-Bold.otf" id="3_vg2cp"]
+[ext_resource type="AudioStream" uid="uid://cahjwhx61vvd1" path="res://puzzle-framework/game/sfx/whoosh_1.ogg" id="7_jxiuc"]
+[ext_resource type="AudioStream" uid="uid://bp3mo2rrhgx8u" path="res://puzzle-framework/game/sfx/windup_stretch.ogg" id="8_tn2wp"]
+[ext_resource type="Texture2D" uid="uid://crm0nybpv13jv" path="res://puzzle-framework/effects/particles/sparkle.png" id="9_h5pny"]
+
+[sub_resource type="Curve" id="Curve_o1seh"]
+_data = [Vector2(0, 0.0047847033), 0.0, 0.0, 0, 0, Vector2(0.09569379, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.1026947, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_klju5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1mkvr"]
+resource_name = "at_illegal_size"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.08726646, 1.5707964]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.2, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.23333335, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.1571745, 0, 0.45573825, 1), Color(1, 1, 1, 1), Color(1.1571745, 0, 0.45573825, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vg2cp"]
+resource_name = "at_max_size"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.353256, 0.5209442, 0.9397174, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1mkvr"]
+_data = {
+&"RESET": SubResource("Animation_klju5"),
+&"at_illegal_size": SubResource("Animation_1mkvr"),
+&"at_max_size": SubResource("Animation_vg2cp")
+}
+
+[node name="Character" type="Node2D" unique_id=836483667 node_paths=PackedStringArray("sprite_container", "sprite", "sprite_shadow", "squasher_stretcher", "anim_player", "label_number", "audio_resize", "audio_illegal_size", "particles_resize")]
+script = ExtResource("1_nnvoy")
+sprite_container = NodePath("Container/SubContainer")
+sprite = NodePath("Container/SubContainer/Sprite2D")
+sprite_shadow = NodePath("SpriteShadow")
+squasher_stretcher = NodePath("SquasherStretcher")
+anim_player = NodePath("AnimationPlayer")
+label_number = NodePath("LabelNumber")
+audio_resize = NodePath("AudioResize")
+audio_illegal_size = NodePath("AudioIllegalSize")
+particles_resize = NodePath("ParticlesResize")
+
+[node name="SpriteShadow" type="Sprite2D" parent="." unique_id=853082517]
+modulate = Color(0, 0, 0, 0.3137255)
+position = Vector2(-1, 0)
+scale = Vector2(0.79687494, 0.3046875)
+texture = ExtResource("2_qxwyv")
+
+[node name="Container" type="Node2D" parent="." unique_id=1003780593]
+
+[node name="SubContainer" type="Node2D" parent="Container" unique_id=1252165506]
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/SubContainer" unique_id=1344287786]
+material = ExtResource("2_1mkvr")
+position = Vector2(0, -92)
+texture = ExtResource("2_klju5")
+hframes = 4
+vframes = 2
+
+[node name="ParticlesResize" type="CPUParticles2D" parent="." unique_id=1605461933]
+emitting = false
+amount = 12
+texture = ExtResource("9_h5pny")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(64, 16)
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.4
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_o1seh")
+
+[node name="LabelNumber" type="Label" parent="." unique_id=1096248301]
+offset_left = -47.0
+offset_top = 19.0
+offset_right = 47.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8392157)
+theme_override_fonts/font = ExtResource("3_vg2cp")
+theme_override_font_sizes/font_size = 42
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SquasherStretcher" type="Node2D" parent="." unique_id=1165585804 node_paths=PackedStringArray("node")]
+script = ExtResource("3_klju5")
+node = NodePath("../Container")
+max_offset = Vector2(0.02, 0.02)
+max_rot = 0.01
+randomization = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1592183591]
+libraries/ = SubResource("AnimationLibrary_1mkvr")
+
+[node name="AudioResize" type="AudioStreamPlayer2D" parent="." unique_id=1415416226]
+stream = ExtResource("7_jxiuc")
+
+[node name="AudioIllegalSize" type="AudioStreamPlayer2D" parent="." unique_id=1183790040]
+stream = ExtResource("8_tn2wp")

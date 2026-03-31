@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bstin8v7fa33i"]
+
+[ext_resource type="Texture2D" uid="uid://cjuk7s8xtluho" path="res://puzzle-framework/ui/sprites/ui-button-restart.png" id="1_gpt64"]
+[ext_resource type="Texture2D" uid="uid://q5odth34r388" path="res://puzzle-framework/ui/sprites/ui-button-restart-pressed.png" id="2_3yqfd"]
+[ext_resource type="Texture2D" uid="uid://dwp8urvjcaf55" path="res://puzzle-framework/ui/sprites/ui-button-restart-hover.png" id="3_46105"]
+
+[node name="ButtonRestart" type="TextureButton" unique_id=270642787]
+texture_normal = ExtResource("1_gpt64")
+texture_pressed = ExtResource("2_3yqfd")
+texture_hover = ExtResource("3_46105")

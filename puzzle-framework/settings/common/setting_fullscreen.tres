@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PuzzleSettingCheckbox" format=3 uid="uid://b5h75jjc8yjpn"]
+
+[ext_resource type="Script" uid="uid://dhfd6mahjlglv" path="res://puzzle-framework/settings/setting_checkbox.gd" id="1_dm5fl"]
+
+[resource]
+script = ExtResource("1_dm5fl")
+key = "fullscreen"
+label = "Fullscreen"
+default = false
+tooltip = "Toggles between full screen and smaller windowed mode."
+callback = "DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if (setting.read() == true) else DisplayServer.WINDOW_MODE_WINDOWED)"
+metadata/_custom_type_script = "uid://dhfd6mahjlglv"

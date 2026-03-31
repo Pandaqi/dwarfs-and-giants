@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ddww3rpatsax8"]
+
+[ext_resource type="Texture2D" uid="uid://cx8wtc3nkfsc2" path="res://puzzle-framework/tutorial/click-tap-indicator.png" id="1_djkqr"]
+
+[node name="Indicator" type="Node2D" unique_id=1691144296]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=671680082]
+position = Vector2(64, 64)
+texture = ExtResource("1_djkqr")

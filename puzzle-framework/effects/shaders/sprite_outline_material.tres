@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cavxytdwavtuw"]
+
+[ext_resource type="Shader" uid="uid://cfdwjr6kwm2n6" path="res://puzzle-framework/effects/shaders/sprite_outline.gdshader" id="1_goojn"]
+
+[resource]
+shader = ExtResource("1_goojn")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 8.00000038
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = false

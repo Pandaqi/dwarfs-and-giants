@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PuzzleSettingSlider" format=3 uid="uid://blt5hmy8kqxw"]
+
+[ext_resource type="Script" uid="uid://bveqd8k261myk" path="res://puzzle-framework/settings/setting_slider.gd" id="1_tsaig"]
+
+[resource]
+script = ExtResource("1_tsaig")
+max_value = 1.0
+step_size = 0.05
+feedback_rounded = false
+key = "volume_ui"
+label = "Volume Background"
+default = 1.0
+tooltip = "Volume of permanent background music"
+callback = "AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Background\"), linear_to_db(setting.read()))"
+metadata/_custom_type_script = "uid://bveqd8k261myk"

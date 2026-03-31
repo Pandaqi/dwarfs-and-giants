@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c0ummp03bidvl"]
+
+[ext_resource type="Texture2D" uid="uid://b4838grxo0se8" path="res://puzzle-framework/ui/sprites/ui-button-back.png" id="1_gq88m"]
+[ext_resource type="Texture2D" uid="uid://bficswe8lggay" path="res://puzzle-framework/ui/sprites/ui-button-back-pressed.png" id="2_hlb0c"]
+[ext_resource type="Texture2D" uid="uid://cpnhjnf4p50x" path="res://puzzle-framework/ui/sprites/ui-button-back-hover.png" id="3_fdq1c"]
+
+[node name="ButtonBack" type="TextureButton" unique_id=911378859]
+texture_normal = ExtResource("1_gq88m")
+texture_pressed = ExtResource("2_hlb0c")
+texture_hover = ExtResource("3_fdq1c")

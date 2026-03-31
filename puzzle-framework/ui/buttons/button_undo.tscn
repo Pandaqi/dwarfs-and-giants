@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bg3okbe3j45a8"]
+
+[ext_resource type="Texture2D" uid="uid://ct126qqhuo0fe" path="res://puzzle-framework/ui/sprites/ui-button-undo.png" id="1_e3npm"]
+[ext_resource type="Texture2D" uid="uid://bn46xyr01r00i" path="res://puzzle-framework/ui/sprites/ui-button-undo-pressed.png" id="2_uivhh"]
+[ext_resource type="Texture2D" uid="uid://08awyi36keg3" path="res://puzzle-framework/ui/sprites/ui-button-undo-hover.png" id="3_86vhd"]
+
+[node name="ButtonUndo" type="TextureButton" unique_id=501702499]
+texture_normal = ExtResource("1_e3npm")
+texture_pressed = ExtResource("2_uivhh")
+texture_hover = ExtResource("3_86vhd")

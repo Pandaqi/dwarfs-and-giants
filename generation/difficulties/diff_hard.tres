@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PuzzleDifficulty" format=3 uid="uid://rj58s4jxh5e2"]
+
+[ext_resource type="Script" uid="uid://7a03fervi8xj" path="res://puzzle-framework/puzzle_difficulty.gd" id="1_ga4ob"]
+
+[resource]
+script = ExtResource("1_ga4ob")
+difficulty = 3
+properties = Dictionary[String, Variant]({
+"dwarfs_come_before_giants": true,
+"dwarfs_shrink_neighbors": true,
+"enforce_size_bounds": false,
+"giants_grow_neighbors": true,
+"grid_size": Vector2i(4, 4),
+"num_turns_bounds": Vector2i(12, 16)
+})
+metadata/_custom_type_script = "uid://7a03fervi8xj"

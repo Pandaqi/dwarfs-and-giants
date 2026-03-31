@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://ioo441cokhft"]
+
+[ext_resource type="Script" uid="uid://ce8jls8tfi3c2" path="res://puzzle-framework/menu/menu.gd" id="1_8qcin"]
+[ext_resource type="PackedScene" uid="uid://lkjwr7m55dxn" path="res://puzzle-framework/menu/buttons/button.tscn" id="2_t1k4y"]
+[ext_resource type="Script" uid="uid://c20tm3t7bdqyn" path="res://puzzle-framework/menu/menu_background.gd" id="3_7igqh"]
+[ext_resource type="Material" uid="uid://b4fglkkp0vwjx" path="res://puzzle-framework/menu/menu_shader_material_dots.tres" id="3_jwtfl"]
+[ext_resource type="PackedScene" uid="uid://c0ummp03bidvl" path="res://puzzle-framework/ui/buttons/button_back.tscn" id="4_dk2qw"]
+[ext_resource type="PackedScene" uid="uid://cr5lkbi5wljm8" path="res://puzzle-framework/ui/buttons/button_settings.tscn" id="5_suu3d"]
+[ext_resource type="Script" uid="uid://d4nyaqwm16djv" path="res://puzzle-framework/settings/settings_visualizer.gd" id="6_pilmq"]
+[ext_resource type="Texture2D" uid="uid://ek1sxfqytwnx" path="res://puzzle-framework/ui/sprites/button_square_depth_gradient.png" id="7_7igqh"]
+
+[node name="Menu" type="Node2D" unique_id=1278934026 node_paths=PackedStringArray("button_container", "background", "menu_container", "pattern", "credits", "heading", "icon", "button_back", "button_settings", "settings")]
+script = ExtResource("1_8qcin")
+button_container = NodePath("CanvasLayer/Menu/VBoxContainer")
+button_scene = ExtResource("2_t1k4y")
+background = NodePath("CanvasLayer/Background")
+menu_container = NodePath("CanvasLayer/Menu")
+pattern = NodePath("CanvasLayer/Background/Pattern/Pattern")
+credits = NodePath("CanvasLayer/Background/Credits/Credits")
+heading = NodePath("CanvasLayer/Menu/VBoxContainer/Heading")
+icon = NodePath("CanvasLayer/Background/Icon/TextureRect")
+button_back = NodePath("CanvasLayer/ButtonBack/ButtonBack")
+button_settings = NodePath("CanvasLayer/ButtonSettings/ButtonSettings")
+settings = NodePath("CanvasLayer/Settings")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1877935870]
+
+[node name="Background" type="Control" parent="CanvasLayer" unique_id=1510077234 node_paths=PackedStringArray("pattern_container", "background", "pattern")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_7igqh")
+pattern_container = NodePath("Pattern")
+background = NodePath("Pattern/Background")
+pattern = NodePath("Pattern/Pattern")
+
+[node name="Pattern" type="Control" parent="CanvasLayer/Background" unique_id=1867591715]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Background/Pattern" unique_id=1730599856]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.53019094, 0.95842415, 1)
+
+[node name="Pattern" type="ColorRect" parent="CanvasLayer/Background/Pattern" unique_id=1919379420]
+material = ExtResource("3_jwtfl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Credits" type="MarginContainer" parent="CanvasLayer/Background" unique_id=1289350361]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 395.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Credits" type="Label" parent="CanvasLayer/Background/Credits" unique_id=849855891]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8352941)
+theme_override_font_sizes/font_size = 12
+text = "Rainbow Market v1.24 | Educational Puzzle Game | The Wayward Melody"
+
+[node name="Icon" type="MarginContainer" parent="CanvasLayer/Background" unique_id=1731463396]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/Icon" unique_id=1879037077]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Menu" type="Control" parent="CanvasLayer" unique_id=1962462081]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu" unique_id=1328641646]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -15.5
+offset_right = 36.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Heading" type="Label" parent="CanvasLayer/Menu/VBoxContainer" unique_id=1495443915]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.98039216)
+theme_override_font_sizes/font_size = 32
+text = "GameName"
+horizontal_alignment = 1
+
+[node name="ButtonBack" type="MarginContainer" parent="CanvasLayer" unique_id=744837074]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonBack" parent="CanvasLayer/ButtonBack" unique_id=911378859 instance=ExtResource("4_dk2qw")]
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ButtonSettings" type="MarginContainer" parent="CanvasLayer" unique_id=324621022]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonSettings" parent="CanvasLayer/ButtonSettings" unique_id=307022183 instance=ExtResource("5_suu3d")]
+layout_mode = 2
+
+[node name="Settings" type="Control" parent="CanvasLayer" unique_id=174193722 node_paths=PackedStringArray("settings_container", "settings_heading")]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_pilmq")
+settings_container = NodePath("NinePatchRect/ScrollContainer/MarginContainer/VBoxContainer")
+settings_heading = NodePath("NinePatchRect/ScrollContainer/MarginContainer/VBoxContainer/Heading")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Settings" unique_id=1938900119]
+custom_minimum_size = Vector2(384, 512)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_7igqh")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Settings/NinePatchRect" unique_id=2000759910]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Settings/NinePatchRect/ScrollContainer" unique_id=874653489]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/NinePatchRect/ScrollContainer/MarginContainer" unique_id=80683471]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Heading" type="Label" parent="CanvasLayer/Settings/NinePatchRect/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1781819245]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1

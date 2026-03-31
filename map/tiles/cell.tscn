@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cijkym0l6s1nu"]
+
+[ext_resource type="Script" uid="uid://cr44twcrqisyo" path="res://map/tiles/cell.gd" id="1_2wr8m"]
+[ext_resource type="Texture2D" uid="uid://ddld468nlfj7f" path="res://map/tiles/grid-tiles-spritesheet.png" id="2_4jtl7"]
+[ext_resource type="PackedScene" uid="uid://dmxoknijp6v2j" path="res://map/characters/character.tscn" id="3_2csrv"]
+[ext_resource type="Texture2D" uid="uid://cc6blvx0jhm7p" path="res://map/tiles/signs-spritesheet.png" id="4_4jtl7"]
+[ext_resource type="AudioStream" uid="uid://cch0wwwcrfh4u" path="res://puzzle-framework/game/sfx/lock-unlock.ogg" id="5_vj45x"]
+[ext_resource type="AudioStream" uid="uid://d3v8u25xskc3a" path="res://puzzle-framework/game/sfx/error.ogg" id="6_i6nvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wr8m"]
+size = Vector2(222, 222)
+
+[node name="Cell" type="Node2D" unique_id=2059788055 node_paths=PackedStringArray("sprite_base", "type_sign", "character", "area", "audio_clicked", "audio_error")]
+script = ExtResource("1_2wr8m")
+sprite_base = NodePath("SpriteBase")
+type_sign = NodePath("TypeSign")
+character = NodePath("Character")
+area = NodePath("Area2D")
+audio_clicked = NodePath("AudioClicked")
+audio_error = NodePath("AudioError")
+
+[node name="SpriteBase" type="Sprite2D" parent="." unique_id=1962067029]
+texture = ExtResource("2_4jtl7")
+hframes = 4
+vframes = 4
+
+[node name="Character" parent="." unique_id=836483667 instance=ExtResource("3_2csrv")]
+z_index = 512
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1991717998]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1670334661]
+shape = SubResource("RectangleShape2D_2wr8m")
+
+[node name="TypeSign" type="Sprite2D" parent="." unique_id=709771664]
+position = Vector2(-66.99999, 75)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_4jtl7")
+centered = false
+offset = Vector2(-128, -256)
+hframes = 2
+
+[node name="AudioClicked" type="AudioStreamPlayer2D" parent="." unique_id=968756544]
+stream = ExtResource("5_vj45x")
+
+[node name="AudioError" type="AudioStreamPlayer2D" parent="." unique_id=858332962]
+stream = ExtResource("6_i6nvy")

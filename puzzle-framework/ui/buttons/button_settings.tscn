@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cr5lkbi5wljm8"]
+
+[ext_resource type="Texture2D" uid="uid://d1yc1k15ki4to" path="res://puzzle-framework/ui/sprites/ui-button-settings.png" id="1_oqc8q"]
+[ext_resource type="Texture2D" uid="uid://c3xqxnd7dbrvg" path="res://puzzle-framework/ui/sprites/ui-button-settings-pressed.png" id="2_vbs8j"]
+[ext_resource type="Texture2D" uid="uid://bvcrvu7vcodxf" path="res://puzzle-framework/ui/sprites/ui-button-settings-hover.png" id="3_rf8vf"]
+
+[node name="ButtonSettings" type="TextureButton" unique_id=307022183]
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_oqc8q")
+texture_pressed = ExtResource("2_vbs8j")
+texture_hover = ExtResource("3_rf8vf")
+ignore_texture_size = true
+stretch_mode = 5

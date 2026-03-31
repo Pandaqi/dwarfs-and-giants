@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleSettingCheckbox" format=3 uid="uid://c73mtja0x8ce0"]
+
+[ext_resource type="Script" uid="uid://dhfd6mahjlglv" path="res://puzzle-framework/settings/setting_checkbox.gd" id="1_yr5vn"]
+
+[resource]
+script = ExtResource("1_yr5vn")
+key = "show_tutorial"
+label = "Show Tutorial"
+default = true
+tooltip = "The easiest difficulty explains the game and guides you through the first steps of the solution."
+metadata/_custom_type_script = "uid://dhfd6mahjlglv"

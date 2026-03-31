@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://2xygcypttdo7"]
+
+[ext_resource type="Script" uid="uid://conyigukur5e1" path="res://puzzle-framework/game/game_menu.gd" id="1_u4vc1"]
+[ext_resource type="PackedScene" uid="uid://c0ummp03bidvl" path="res://puzzle-framework/ui/buttons/button_back.tscn" id="2_nt4ip"]
+[ext_resource type="PackedScene" uid="uid://bstin8v7fa33i" path="res://puzzle-framework/ui/buttons/button_restart.tscn" id="3_g2ycg"]
+[ext_resource type="PackedScene" uid="uid://bg3okbe3j45a8" path="res://puzzle-framework/ui/buttons/button_undo.tscn" id="4_rs2vk"]
+[ext_resource type="PackedScene" uid="uid://b1an4igq6jdod" path="res://puzzle-framework/ui/buttons/button_hint.tscn" id="5_nt4ip"]
+[ext_resource type="PackedScene" uid="uid://vp1m4bup3jph" path="res://puzzle-framework/ui/buttons/button_next.tscn" id="5_yjix4"]
+
+[node name="GameMenu" type="CanvasLayer" unique_id=950523672 node_paths=PackedStringArray("container", "label_seed", "button_back", "button_restart", "button_undo", "button_hint", "button_next", "label_feedback")]
+script = ExtResource("1_u4vc1")
+container = NodePath("MarginContainer")
+label_seed = NodePath("Seed/Label")
+button_back = NodePath("MarginContainer/VBoxContainer/ButtonBack")
+button_restart = NodePath("MarginContainer/VBoxContainer/ButtonRestart")
+button_undo = NodePath("MarginContainer/VBoxContainer/ButtonUndo")
+button_hint = NodePath("MarginContainer/VBoxContainer/ButtonHint")
+button_next = NodePath("MarginContainer/VBoxContainer/ButtonNext")
+label_feedback = NodePath("FeedbackLarge/Label")
+
+[node name="Seed" type="MarginContainer" parent="." unique_id=596682338]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Seed" unique_id=590329382]
+modulate = Color(1, 1, 1, 0.48235294)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1232039053]
+custom_minimum_size = Vector2(320, 96)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="BoxContainer" parent="MarginContainer" unique_id=291516780]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ButtonBack" parent="MarginContainer/VBoxContainer" unique_id=911378859 instance=ExtResource("2_nt4ip")]
+layout_mode = 2
+size_flags_horizontal = 3
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ButtonRestart" parent="MarginContainer/VBoxContainer" unique_id=270642787 instance=ExtResource("3_g2ycg")]
+layout_mode = 2
+size_flags_horizontal = 3
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ButtonUndo" parent="MarginContainer/VBoxContainer" unique_id=501702499 instance=ExtResource("4_rs2vk")]
+layout_mode = 2
+size_flags_horizontal = 3
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ButtonHint" parent="MarginContainer/VBoxContainer" unique_id=1703315551 instance=ExtResource("5_nt4ip")]
+layout_mode = 2
+
+[node name="ButtonNext" parent="MarginContainer/VBoxContainer" unique_id=1908077659 instance=ExtResource("5_yjix4")]
+layout_mode = 2
+size_flags_horizontal = 3
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="FeedbackLarge" type="MarginContainer" parent="." unique_id=671432958]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.0
+offset_right = 264.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="FeedbackLarge" unique_id=776617365]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Testestestseteshsehsekhmksehlsemhesmkhlemlhkemkhleklhesmklhsemhkselhsmklhse"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

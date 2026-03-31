@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PuzzleSettingSlider" format=3 uid="uid://bpx3va84mb70o"]
+
+[ext_resource type="Script" uid="uid://bveqd8k261myk" path="res://puzzle-framework/settings/setting_slider.gd" id="1_sbwp5"]
+
+[resource]
+script = ExtResource("1_sbwp5")
+max_value = 1.0
+step_size = 0.05
+feedback_rounded = false
+key = "volume_ui"
+label = "Volume Interface"
+default = 1.0
+tooltip = "Volume of interface (button, click, etc) sounds"
+callback = "AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"UI\"), linear_to_db(setting.read()))"
+metadata/_custom_type_script = "uid://bveqd8k261myk"

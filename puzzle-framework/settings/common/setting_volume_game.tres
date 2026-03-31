@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PuzzleSettingSlider" format=3 uid="uid://doyw0pbgpwr17"]
+
+[ext_resource type="Script" uid="uid://bveqd8k261myk" path="res://puzzle-framework/settings/setting_slider.gd" id="1_nc2s5"]
+
+[resource]
+script = ExtResource("1_nc2s5")
+max_value = 1.0
+step_size = 0.05
+feedback_rounded = false
+key = "volume_game"
+label = "Volume Game"
+default = 1.0
+tooltip = "Volume of all game sound effects"
+callback = "AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Game\"), linear_to_db(setting.read()))"
+metadata/_custom_type_script = "uid://bveqd8k261myk"

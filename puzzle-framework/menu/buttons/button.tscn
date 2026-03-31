@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://lkjwr7m55dxn"]
+
+[ext_resource type="Script" uid="uid://b6f562nuv6kt3" path="res://puzzle-framework/menu/buttons/button.gd" id="1_yghxt"]
+
+[node name="Button" type="Button" unique_id=1481839398]
+custom_minimum_size = Vector2(256, 0)
+text = "TestTest"
+script = ExtResource("1_yghxt")

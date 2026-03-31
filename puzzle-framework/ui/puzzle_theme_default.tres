@@ -1,0 +1,75 @@
+[gd_resource type="Theme" format=3 uid="uid://d0wlrrkq7diyd"]
+
+[ext_resource type="Texture2D" uid="uid://bxsumx3gh2ott" path="res://puzzle-framework/ui/sprites/button_rectangle_depth_gloss_green.png" id="1_o52c0"]
+[ext_resource type="Texture2D" uid="uid://cp25oyqil76et" path="res://puzzle-framework/ui/sprites/button_rectangle_depth_gloss.png" id="1_r0n7j"]
+[ext_resource type="FontFile" uid="uid://c3d6qeo5ggp8q" path="res://puzzle-framework/ui/fonts/LilitaOne-Regular.ttf" id="1_w18eq"]
+[ext_resource type="Texture2D" uid="uid://dsk4qlljwe5ym" path="res://puzzle-framework/ui/sprites/button_rectangle_depth_gloss_red.png" id="3_5gpu4"]
+[ext_resource type="Texture2D" uid="uid://cknflx22nkclk" path="res://puzzle-framework/ui/sprites/icon_outline_circle_green.png" id="4_431jb"]
+[ext_resource type="Texture2D" uid="uid://coecm0fqsnrcm" path="res://puzzle-framework/ui/sprites/icon_outline_circle_gray.png" id="5_24s37"]
+[ext_resource type="Texture2D" uid="uid://bf3jq8w5wmsh4" path="res://puzzle-framework/ui/sprites/icon_outline_circle_red.png" id="6_35rgx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5gpu4"]
+texture = ExtResource("1_o52c0")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ucmf0"]
+texture = ExtResource("3_5gpu4")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o52c0"]
+texture = ExtResource("1_r0n7j")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r38pq"]
+texture = ExtResource("3_5gpu4")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_431jb"]
+bg_color = Color(0.18431373, 0.84313726, 0.57254905, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24s37"]
+bg_color = Color(1, 0.38431373, 0.48235294, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxu71"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+default_font = ExtResource("1_w18eq")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/hover = SubResource("StyleBoxTexture_5gpu4")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_ucmf0")
+Button/styles/normal = SubResource("StyleBoxTexture_o52c0")
+Button/styles/pressed = SubResource("StyleBoxTexture_r38pq")
+HSlider/icons/grabber = ExtResource("4_431jb")
+HSlider/icons/grabber_disabled = ExtResource("5_24s37")
+HSlider/icons/grabber_highlight = ExtResource("6_35rgx")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_431jb")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_24s37")
+HSlider/styles/slider = SubResource("StyleBoxFlat_qxu71")
+Label/colors/font_color = Color(0.17063957, 0.2561905, 0.3135514, 1)
+TooltipLabel/colors/font_color = Color(0.875, 0.875, 0.875, 1)

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PuzzleDifficulty" format=3 uid="uid://cg40rxof8sifw"]
+
+[ext_resource type="Script" uid="uid://7a03fervi8xj" path="res://puzzle-framework/puzzle_difficulty.gd" id="1_6uw78"]
+
+[resource]
+script = ExtResource("1_6uw78")
+difficulty = 4
+feedback = "You can click dwarfs/giants in any order now. Just don't make them too large or too small ..."
+properties = Dictionary[String, Variant]({
+"allow_any_order": true,
+"dwarfs_come_before_giants": false,
+"dwarfs_shrink_neighbors": true,
+"enforce_size_bounds": true,
+"giants_grow_neighbors": true,
+"grid_size": Vector2i(5, 5),
+"num_turns_bounds": Vector2i(20, 25)
+})
+metadata/_custom_type_script = "uid://7a03fervi8xj"
