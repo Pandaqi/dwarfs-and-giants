@@ -9,7 +9,15 @@
 [ext_resource type="Resource" uid="uid://rj58s4jxh5e2" path="res://generation/difficulties/diff_hard.tres" id="6_tgv6f"]
 [ext_resource type="Resource" uid="uid://cg40rxof8sifw" path="res://generation/difficulties/diff_hardest.tres" id="7_qky6c"]
 [ext_resource type="FontFile" uid="uid://bed5pyde1dpwn" path="res://ui/Norse-Bold.otf" id="8_tgv6f"]
+[ext_resource type="Script" uid="uid://xoy87uum5v5s" path="res://puzzle-framework/settings/setting.gd" id="9_k0h2b"]
 [ext_resource type="FontFile" uid="uid://c7s25jjhk7umw" path="res://ui/Junicode-Bold.ttf" id="9_tgv6f"]
+[ext_resource type="Resource" uid="uid://b5h75jjc8yjpn" path="res://puzzle-framework/settings/common/setting_fullscreen.tres" id="10_w5xje"]
+[ext_resource type="Resource" uid="uid://c73mtja0x8ce0" path="res://puzzle-framework/settings/common/setting_tutorial.tres" id="11_ftmnh"]
+[ext_resource type="Resource" uid="uid://doyw0pbgpwr17" path="res://puzzle-framework/settings/common/setting_volume_game.tres" id="12_w5ts3"]
+[ext_resource type="Resource" uid="uid://bpx3va84mb70o" path="res://puzzle-framework/settings/common/setting_volume_ui.tres" id="13_rtetl"]
+[ext_resource type="Resource" uid="uid://d4eet8diiecrv" path="res://generation/settings/setting_numbers.tres" id="14_w5ts3"]
+[ext_resource type="Resource" uid="uid://cm3tglsy77rm3" path="res://generation/settings/setting_type_signs.tres" id="15_rtetl"]
+[ext_resource type="Resource" uid="uid://br3sfvdpxym1a" path="res://generation/settings/setting_vary_sprites.tres" id="16_rwo2v"]
 
 [node name="PuzzleFramework" type="Node" unique_id=835186744]
 script = ExtResource("1_57jsw")
@@ -19,5 +27,6 @@ game_tagline = "Teaches Comparing & Sizes"
 favicon = "main/dwarfs-and-giants-favicon.png"
 menu_scene_custom = ExtResource("2_qky6c")
 difficulties = Array[ExtResource("3_tgv6f")]([ExtResource("2_swsbt"), ExtResource("4_swsbt"), ExtResource("5_xffpj"), ExtResource("6_tgv6f"), ExtResource("7_qky6c")])
+settings = Array[ExtResource("9_k0h2b")]([ExtResource("10_w5xje"), ExtResource("11_ftmnh"), ExtResource("12_w5ts3"), ExtResource("13_rtetl"), ExtResource("14_w5ts3"), ExtResource("15_rtetl"), ExtResource("16_rwo2v")])
 font_heading = ExtResource("8_tgv6f")
 font_body = ExtResource("9_tgv6f")

@@ -28,12 +28,13 @@ func _ready() -> void:
 	
 	type_sign.position.x += randf_range(-1,1) * 4.0
 	type_sign.rotation = randf_range(-1,1) * 0.025 * PI
-	
+
+func revive() -> void:
+	if tween_active: PuzzleTween.force_tween_completion(tween_active)
 	tween_active = PuzzleTween.play_popup_tween(self)
 
 func destroy() -> void:
 	tween_active = PuzzleTween.play_popdown_tween(self)
-	tween_active.tween_callback(self.queue_free)
 
 func _on_mouse_entered() -> void:
 	hovering = true

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleSettingCheckbox" format=3 uid="uid://d4eet8diiecrv"]
+
+[ext_resource type="Script" uid="uid://dhfd6mahjlglv" path="res://puzzle-framework/settings/setting_checkbox.gd" id="1_vcplg"]
+
+[resource]
+script = ExtResource("1_vcplg")
+key = "show_size_numbers"
+label = "Enable Numbers"
+default = false
+tooltip = "Show a number representing the character's size. Teaches counting + makes puzzles easier."
+metadata/_custom_type_script = "uid://dhfd6mahjlglv"

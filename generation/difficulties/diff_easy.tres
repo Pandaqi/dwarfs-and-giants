@@ -5,12 +5,14 @@
 [resource]
 script = ExtResource("1_33bcq")
 difficulty = 1
+feedback = "A dwarf will SHRINK everyone around them. Don't let anyone get too small!"
 properties = Dictionary[String, Variant]({
-"dwarfs_come_before_giants": true,
-"dwarfs_shrink_neighbors": false,
-"enforce_size_bounds": false,
+"allow_any_order": false,
+"dwarfs_come_before_giants": false,
+"dwarfs_shrink_neighbors": true,
+"enforce_size_bounds": true,
 "giants_grow_neighbors": false,
 "grid_size": Vector2i(3, 3),
-"num_turns_bounds": Vector2i(4, 8)
+"num_turns_bounds": Vector2i(5, 9)
 })
 metadata/_custom_type_script = "uid://7a03fervi8xj"

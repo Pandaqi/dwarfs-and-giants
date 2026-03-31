@@ -42,7 +42,8 @@ func _ready() -> void:
 	
 	set_feedback(PuzzleSettings.get_difficulty().feedback)
 	set_label_text("Difficulty: " + PuzzleSettings.get_difficulty_string() + " | Seed: " + str(PuzzleFramework.puzzle_seed))
-
+	
+	PuzzleFramework.puzzle_reopened.connect(_on_puzzle_reopened)
 	PuzzleFramework.puzzle_done.connect(_on_puzzle_done)
 
 func set_label_text(txt:String) -> void:
@@ -65,8 +66,11 @@ func _on_button_hint_pressed() -> void:
 func _on_button_next_pressed() -> void:
 	PuzzleFramework.load_new_puzzle()
 
+func _on_puzzle_reopened() -> void:
+	show()
+
 func _on_puzzle_done(_player_won:bool) -> void:
-	queue_free()
+	hide()
 
 func set_feedback(txt:String) -> void:
 	label_feedback.set_text(txt)

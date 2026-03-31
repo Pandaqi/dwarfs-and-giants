@@ -26,3 +26,4 @@ allow_undo = true
 allow_hint = true
 
 [node name="GameOverDialog" parent="." unique_id=1270097331 instance=ExtResource("4_3wy1v")]
+allow_undo = true

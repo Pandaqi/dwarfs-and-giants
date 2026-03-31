@@ -5,12 +5,14 @@
 [resource]
 script = ExtResource("1_sf2im")
 difficulty = 2
+feedback = "A giant will GROW everyone around them. Don't let anyone get too big!"
 properties = Dictionary[String, Variant]({
-"dwarfs_come_before_giants": true,
+"allow_any_order": false,
+"dwarfs_come_before_giants": false,
 "dwarfs_shrink_neighbors": true,
-"enforce_size_bounds": false,
-"giants_grow_neighbors": false,
+"enforce_size_bounds": true,
+"giants_grow_neighbors": true,
 "grid_size": Vector2i(4, 4),
-"num_turns_bounds": Vector2i(9, 12)
+"num_turns_bounds": Vector2i(12, 16)
 })
 metadata/_custom_type_script = "uid://7a03fervi8xj"

@@ -10,6 +10,8 @@ class_name Character
 
 @export var audio_resize : AudioStreamPlayer2D
 @export var audio_illegal_size : AudioStreamPlayer2D
+@export var audio_collected_dwarf : AudioStreamPlayer2D
+@export var audio_collected_giant : AudioStreamPlayer2D
 @export var particles_resize : CPUParticles2D
 
 const DWARF_FRAMES : Array[int] = [0,1,2] # frame 3???
@@ -20,8 +22,10 @@ const GIANT_OUTLINE_COLOR := Color.BLUE
 
 var data : CellData
 var was_visible := true
+var last_known_type := CellData.Type.NONE
 var old_size := -1
 var scale_bounds := Vector2(0.225, 0.9)
+var scale_bounds_extremes := Vector2(0.175, 1.05) # for TOO SMALL and TOO BIG moments
 var tween_active : Tween
 var hovered := false
 
@@ -38,18 +42,31 @@ func refresh_outline() -> void:
 	if hovered: base_color = Color.GREEN
 	sprite.material.set_shader_parameter("color", base_color)
 
+func get_voice_audio_player() -> AudioStreamPlayer2D:
+	return audio_collected_dwarf if (last_known_type == CellData.Type.DWARF) else audio_collected_giant
+
+func has_been_used() -> bool:
+	return old_size != -1
+
+func on_collected() -> void:
+	tween_active = PuzzleTween.play_popdown_tween(self)
+	if has_been_used():
+		PuzzleAudio.play_audio_nice(get_voice_audio_player())
+
 func refresh_from_data(cd:CellData) -> void:
 	data = cd
 	
 	if tween_active: PuzzleTween.force_tween_completion(tween_active)
 	
 	if not data.has_type(): 
-		if was_visible: tween_active = PuzzleTween.play_popdown_tween(self)
+		if was_visible: on_collected()
 		was_visible = false
 		return
 	
 	if not was_visible:
 		tween_active = PuzzleTween.play_popup_tween(self)
+	
+	last_known_type = data.type
 	
 	var frames : Array[int] = DWARF_FRAMES if data.is_dwarf() else GIANT_FRAMES
 	var frame := frames[PuzzleFramework.puzzle_seed % frames.size()]
@@ -59,7 +76,11 @@ func refresh_from_data(cd:CellData) -> void:
 	refresh_outline()
 	
 	var tween_resize := old_size != -1 and data.size != old_size
-	var new_scale := lerpf(scale_bounds.x, scale_bounds.y, data.get_size_as_ratio())
+	var size_ratio := data.get_size_as_ratio()
+	var new_scale := lerpf(scale_bounds.x, scale_bounds.y, size_ratio)
+	if size_ratio < 0.0: new_scale = scale_bounds_extremes.x
+	if size_ratio > 1.0: new_scale = scale_bounds_extremes.y
+	
 	if tween_resize:
 		PuzzleAudio.play_audio_nice(audio_resize)
 		particles_resize.set_emitting(true)
@@ -83,4 +104,4 @@ func refresh_from_data(cd:CellData) -> void:
 	
 	was_visible = true
 	old_size = data.get_size()
-	label_number.set_text(str(old_size))
+	label_number.set_text(str(old_size + 1))

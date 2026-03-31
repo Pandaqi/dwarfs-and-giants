@@ -5,12 +5,14 @@
 [resource]
 script = ExtResource("1_ga4ob")
 difficulty = 3
+feedback = "You can click dwarfs/giants in any order now."
 properties = Dictionary[String, Variant]({
-"dwarfs_come_before_giants": true,
+"allow_any_order": true,
+"dwarfs_come_before_giants": false,
 "dwarfs_shrink_neighbors": true,
-"enforce_size_bounds": false,
+"enforce_size_bounds": true,
 "giants_grow_neighbors": true,
-"grid_size": Vector2i(4, 4),
-"num_turns_bounds": Vector2i(12, 16)
+"grid_size": Vector2i(5, 4),
+"num_turns_bounds": Vector2i(16, 20)
 })
 metadata/_custom_type_script = "uid://7a03fervi8xj"

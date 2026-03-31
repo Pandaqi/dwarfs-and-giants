@@ -46,6 +46,7 @@ enum State
 }
 
 signal puzzle_started()
+signal puzzle_reopened()
 signal puzzle_done(player_won:bool)
 
 func _enter_tree() -> void:
@@ -91,6 +92,11 @@ func start_puzzle() -> void:
 	change_state(State.PUZZLE)
 	audio.state_audio.play()
 	puzzle_started.emit()
+
+func reopen_puzzle() -> void:
+	change_state(State.PUZZLE)
+	commands.undo_last_turn()
+	puzzle_reopened.emit()
 
 func finish_puzzle(player_won := false) -> void:
 	change_state(State.DONE)

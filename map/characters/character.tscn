@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://cahjwhx61vvd1" path="res://puzzle-framework/game/sfx/whoosh_1.ogg" id="7_jxiuc"]
 [ext_resource type="AudioStream" uid="uid://bp3mo2rrhgx8u" path="res://puzzle-framework/game/sfx/windup_stretch.ogg" id="8_tn2wp"]
 [ext_resource type="Texture2D" uid="uid://crm0nybpv13jv" path="res://puzzle-framework/effects/particles/sparkle.png" id="9_h5pny"]
+[ext_resource type="AudioStream" uid="uid://djdnfv16ks5is" path="res://map/characters/dwarf-pickaxe.ogg" id="10_4s6a1"]
+[ext_resource type="AudioStream" uid="uid://bjig4bgdgdfkh" path="res://map/characters/giant-booming-voice.ogg" id="11_j7asu"]
 
 [sub_resource type="Curve" id="Curve_o1seh"]
 _data = [Vector2(0, 0.0047847033), 0.0, 0.0, 0, 0, Vector2(0.09569379, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.1026947, 0.0, 0, 0]
@@ -116,7 +118,7 @@ _data = {
 &"at_max_size": SubResource("Animation_vg2cp")
 }
 
-[node name="Character" type="Node2D" unique_id=836483667 node_paths=PackedStringArray("sprite_container", "sprite", "sprite_shadow", "squasher_stretcher", "anim_player", "label_number", "audio_resize", "audio_illegal_size", "particles_resize")]
+[node name="Character" type="Node2D" unique_id=836483667 node_paths=PackedStringArray("sprite_container", "sprite", "sprite_shadow", "squasher_stretcher", "anim_player", "label_number", "audio_resize", "audio_illegal_size", "audio_collected_dwarf", "audio_collected_giant", "particles_resize")]
 script = ExtResource("1_nnvoy")
 sprite_container = NodePath("Container/SubContainer")
 sprite = NodePath("Container/SubContainer/Sprite2D")
@@ -126,6 +128,8 @@ anim_player = NodePath("AnimationPlayer")
 label_number = NodePath("LabelNumber")
 audio_resize = NodePath("AudioResize")
 audio_illegal_size = NodePath("AudioIllegalSize")
+audio_collected_dwarf = NodePath("AudioDwarf")
+audio_collected_giant = NodePath("AudioGiant")
 particles_resize = NodePath("ParticlesResize")
 
 [node name="SpriteShadow" type="Sprite2D" parent="." unique_id=853082517]
@@ -170,6 +174,10 @@ offset_right = 47.0
 offset_bottom = 62.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("3_vg2cp")
 theme_override_font_sizes/font_size = 42
 text = "3"
@@ -191,3 +199,9 @@ stream = ExtResource("7_jxiuc")
 
 [node name="AudioIllegalSize" type="AudioStreamPlayer2D" parent="." unique_id=1183790040]
 stream = ExtResource("8_tn2wp")
+
+[node name="AudioDwarf" type="AudioStreamPlayer2D" parent="." unique_id=1436127330]
+stream = ExtResource("10_4s6a1")
+
+[node name="AudioGiant" type="AudioStreamPlayer2D" parent="." unique_id=1489814016]
+stream = ExtResource("11_j7asu")

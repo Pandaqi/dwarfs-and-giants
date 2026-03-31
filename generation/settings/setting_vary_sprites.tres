@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleSettingCheckbox" format=3 uid="uid://br3sfvdpxym1a"]
+
+[ext_resource type="Script" uid="uid://dhfd6mahjlglv" path="res://puzzle-framework/settings/setting_checkbox.gd" id="1_cei8n"]
+
+[resource]
+script = ExtResource("1_cei8n")
+key = "use_varying_sprites"
+label = "Randomize Dwarf/Giant Sprites"
+default = false
+tooltip = "Changes what the characters look like for extra variety and challenge."
+metadata/_custom_type_script = "uid://dhfd6mahjlglv"

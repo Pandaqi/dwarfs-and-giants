@@ -6,7 +6,7 @@ var solution : Array[PuzzleCommand]
 
 var grid_size := Vector2i(3,3)
 var num_turns_bounds := Vector2i(5,7) # this is automatically also the number of characters in the puzzle
-var cell_size_bounds := Vector2i(0,5)
+var cell_size_bounds := Vector2i(0,3)
 var place_multiple_of_same_prob := 0.25
 
 var dont_resize_when_not_needed := true
@@ -15,22 +15,28 @@ var dwarfs_shrink_neighbors := false
 var giants_grow_neighbors := false
 var enforce_size_bounds := false
 var allow_any_order := false
+var allow_diagonal_neighbors := false
 
 func generate() -> void:
 	PuzzleSettings.apply_difficulty_properties(self)
 	
 	var max_tries := 100
-	for i in range(max_tries):
-		print("PuzzleGenerator | Attempt " + str(i))
+	var num_tries := 0
+	while true:
+		print("PuzzleGenerator | Attempt " + str(num_tries))
 		create_grid()
 		take_turns()
 		var success := clean_up()
 		if success: break
+		
+		# if we're hopeless, just stretch the cell size bounds until we're guaranteed to find something
+		num_tries += 1
+		if num_tries >= max_tries: cell_size_bounds.y += 1
 
 func create_grid() -> void:
 	grid = PuzzleGrid.new()
 	grid.creation_callback = func(pos:Vector2i): return CellData.new(pos)
-	grid.neighbor_mode = PuzzleGrid.NeighborMode.ORTHOGONAL
+	grid.neighbor_mode = PuzzleGrid.NeighborMode.ALL if allow_diagonal_neighbors else PuzzleGrid.NeighborMode.ORTHOGONAL
 	grid.create(grid_size)
 
 func take_turns() -> void:
@@ -119,7 +125,7 @@ func get_max_dist_to_size_bound(type := "below", cells:Array[CellData] = []) -> 
 	for cell in cells:
 		var dist_cell := 0
 		if type == "below": 
-			dist_cell - cell_size_bounds.x - cell.size_min
+			dist_cell = cell_size_bounds.x - cell.size_min
 		if type == "above":
 			dist_cell = cell.size_max - cell_size_bounds.y
 		dist = maxi(dist, dist_cell)
@@ -137,7 +143,7 @@ func calibrate_sizes() -> bool:
 		if not (cell.get_size() in cells_by_size): cells_by_size[cell.get_size()] = []
 		cells_by_size[cell.get_size()].append(cell)
 	
-	var should_resize := not (dont_resize_when_not_needed and is_within_bounds(min_size, cell_size_bounds) and is_within_bounds(max_size, cell_size_bounds))
+	var should_resize := not (dont_resize_when_not_needed and is_within_size_bounds(min_size) and is_within_size_bounds(max_size))
 	if not should_resize: return true
 	
 	print("PuzzleGenerator | Needs Recalibrating | ", min_size, " | ", max_size)
@@ -146,14 +152,27 @@ func calibrate_sizes() -> bool:
 	# essentially, it all gets pushed to the same level so that the player has to find the order
 	var cells_below := get_cells_compared_to_bounds("below")
 	for cell in cells_below:
-		cell.change_size(cell_size_bounds.x - cell.size_min)
-		if cell.is_illegal_size(): return false
+		var push_up := cell_size_bounds.x - cell.size_min
+		var push_up_max := cell_size_bounds.y - cell.size_max
+		if push_up > push_up_max: return false
+		if allow_any_order: 
+			push_up = randi_range(push_up, push_up_max)
+		cell.change_size_force(push_up)
 	
 	# check anything ABOVE our bound that needs to be pushed down
 	var cells_above := get_cells_compared_to_bounds("above")
 	for cell in cells_above:
-		cell.change_size(cell_size_bounds.y - cell.size_max)
-		if cell.is_illegal_size(): return false
+		var push_down := cell_size_bounds.y - cell.size_max
+		var push_down_max := cell_size_bounds.x - cell.size_min
+		if push_down < push_down_max: return false
+		if allow_any_order: 
+			push_down = randi_range(push_down, push_down_max)
+		cell.change_size_force(push_down)
+	
+	# if something's size is too bad now, there's nothing we can do to save it (the thing has been pushed up and down, and it just does not fit within the bounds), so abort
+	for cell in cells_used:
+		if not is_within_size_bounds(cell.size_min): return false
+		if not is_within_size_bounds(cell.size_max): return false
 	
 	return true
 
@@ -170,8 +189,8 @@ func clean_up() -> bool:
 	
 	return true
 
-func is_within_bounds(val:int, bds:Vector2i) -> bool:
-	return val >= bds.x and val <= bds.y
+func is_within_size_bounds(val:int) -> bool:
+	return val >= cell_size_bounds.x and val <= cell_size_bounds.y
 
 
 	

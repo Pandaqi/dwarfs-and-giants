@@ -35,6 +35,9 @@ func visualize() -> void:
 	commands.prepare_for_play()
 	commands.set_solution(gen.solution)
 	commands.do_finished.connect(_on_commands_finished)
+	
+	PuzzleFramework.puzzle_reopened.connect(revive)
+	PuzzleFramework.start_puzzle()
 
 func is_valid_next_move(cell_clicked:Cell) -> bool:
 	if not cell_clicked.data.has_type(): return false
@@ -92,9 +95,15 @@ func _on_commands_finished() -> void:
 func goto_game_over(we_won := false) -> void:
 	# wait for the dying animation
 	if not we_won: 
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.8).timeout
 	
 	PuzzleFramework.finish_puzzle(we_won)
-	
+	destroy()
+
+func destroy() -> void:
 	for cell in cells:
 		cell.destroy()
+
+func revive() -> void:
+	for cell in cells:
+		cell.revive()

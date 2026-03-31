@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleSettingCheckbox" format=3 uid="uid://cm3tglsy77rm3"]
+
+[ext_resource type="Script" uid="uid://dhfd6mahjlglv" path="res://puzzle-framework/settings/setting_checkbox.gd" id="1_7lt0g"]
+
+[resource]
+script = ExtResource("1_7lt0g")
+key = "show_type_signs"
+label = "Show Signs Marking Which Sprites are Dwarfs/Giants"
+default = false
+tooltip = "This communicates extra clearly what is a dwarf and what is a giant."
+metadata/_custom_type_script = "uid://dhfd6mahjlglv"

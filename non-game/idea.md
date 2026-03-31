@@ -33,39 +33,17 @@ HOW TO GENERATE?
 # To-Do
 
 
-## Settings
-
-* `show_size_numbers`:  "Enable Numbers" -> show a number representing the character's size. Teaches counting + makes puzzles easier.
-* `use_varying_sprites`: "Randomize Dwarf/Giant Sprites"
-* `show_type_signs`: Show Signs Marking Which Sprites are Dwarfs/Giants
-
-
-
 ## Finishing
 
-FRAMEWORK (IMPORTANT): ALLOW UNDO AFTER FAILING THE PUZZLE!
-
+* SETTING: Control the number of "different scale levels", because my code will work just fine with any number of them.
+* HARDEST DIFFICULTY: Allow a range of grid sizes?
 * Tutorial (we need a unique one per level, to explain the next rule; maybe also show an IMAGE of this rule at the sides of the map?)
-* Visuals => vectorize, or at least cut out better / re-export
-* Very short devlog, mostly about the algorithm trick
-* (The gameover sound might just be a little loud?)
+  * Make this a built-in feature of the `PuzzleTutorial` system => showing images around the map and/or like pop-ups
 
 
+## Discarded
 
-## Algorithm Improvements
-
-FIX: Our new calibrating logic does not _guarantee_ a solvable puzzle on Easy-Hard because dwarfs need to come before giants. How to fix? 
-
-IMPROV: Difficulty levels slightly different
-
-* Maybe do "dwarfs before giants" already at level 1?
-* Already enforce bounds earlier
-* Maybe HARD already has grow/shrink
-* And the biggest change for HARDEST is to allow any order + bigger grids?
-
-
-
-### Other Approach
+### Other Algorithm
 
 Possible different approach:
 

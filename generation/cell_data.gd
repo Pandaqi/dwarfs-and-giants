@@ -64,6 +64,8 @@ func change_size(ds:int) -> void:
 
 func change_size_force(ds:int) -> void:
 	size += ds
+	size_min += ds
+	size_max += ds
 
 func set_size(s:int) -> void:
 	size = s
