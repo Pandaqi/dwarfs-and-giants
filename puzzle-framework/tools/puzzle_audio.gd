@@ -1,6 +1,7 @@
 extends Node
 class_name PuzzleAudio
 
+var bg_audio : AudioStreamPlayer
 var button_audio : AudioStreamPlayer
 var state_audio : AudioStreamPlayer
 var undo_audio : AudioStreamPlayer
@@ -34,19 +35,19 @@ func create_audio_players() -> void:
 	button_audio = AudioStreamPlayer.new()
 	add_child(button_audio)
 	button_audio.bus = "UI"
-	button_audio.stream = load("res://puzzle-framework/ui/ui_button_press.ogg")
+	button_audio.stream = preload("res://puzzle-framework/ui/ui_button_press.ogg")
 	button_audio.volume_db = -9
 	
 	state_audio = AudioStreamPlayer.new()
 	add_child(state_audio)
 	state_audio.bus = "Game"
-	state_audio.stream = load("res://puzzle-framework/game/sfx/game_new.ogg")
+	state_audio.stream = preload("res://puzzle-framework/game/sfx/game_new.ogg")
 	state_audio.volume_db = -6
 	
 	undo_audio = AudioStreamPlayer.new()
 	add_child(undo_audio)
 	undo_audio.bus = "UI"
-	undo_audio.stream = load("res://puzzle-framework/ui/ui_undo.ogg")
+	undo_audio.stream = preload("res://puzzle-framework/ui/ui_undo.ogg")
 
 func _on_node_added(node):
 	if (node is Button) or (node is TextureButton):
@@ -55,3 +56,15 @@ func _on_node_added(node):
 		
 func play_ui_button_sound():
 	play_audio_nice(button_audio)
+
+func load_background_music(bg_music:Array[AudioStream]) -> void:
+	bg_audio = AudioStreamPlayer.new()
+	bg_audio.bus = "Background"
+	add_child(bg_audio)
+	
+	var randomizer := AudioStreamRandomizer.new()
+	randomizer.playback_mode = AudioStreamRandomizer.PLAYBACK_RANDOM_NO_REPEATS
+	for song in bg_music:
+		randomizer.add_stream(-1, song)
+	bg_audio.stream = randomizer
+	bg_audio.play()

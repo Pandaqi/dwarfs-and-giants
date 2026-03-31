@@ -24,7 +24,7 @@ func create_all_settings() -> void:
 		settings_by_id[setting.key] = setting
 		setting.value_changed.connect(_on_value_changed)
 
-func _on_value_changed(setting:PuzzleSetting) -> void:
+func _on_value_changed(_setting:PuzzleSetting) -> void:
 	pass
 
 func get_by_key(key:String) -> PuzzleSetting:

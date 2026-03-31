@@ -9,6 +9,7 @@ var busy := false
 
 @export var cell_scene : PackedScene
 @export var cam : PuzzleCamera
+@export var tutorial : PuzzleTutorial
 
 func _ready() -> void:
 	gen = PuzzleGenerator.new()
@@ -36,22 +37,31 @@ func visualize() -> void:
 	commands.set_solution(gen.solution)
 	commands.do_finished.connect(_on_commands_finished)
 	
+	var solution_cells : Array[Node2D] = []
+	solution_cells.assign( gen.solution.map(func(c:CommandTurn): return get_cell_with_data(c.cell)) )
+	tutorial.set_focus_objects(solution_cells)
+	
 	PuzzleFramework.puzzle_reopened.connect(revive)
 	PuzzleFramework.start_puzzle()
+
+func get_cell_with_data(cd:CellData) -> Cell:
+	for cell in cells:
+		if cell.data == cd: return cell
+	return null
 
 func is_valid_next_move(cell_clicked:Cell) -> bool:
 	if not cell_clicked.data.has_type(): return false
 	if gen.allow_any_order: return true
 	
 	# get all cells sorted
-	var cells := gen.get_cells_sorted_correctly()
-	if cells.size() <= 0: return false
+	var cells_sorted := gen.get_cells_sorted_correctly()
+	if cells_sorted.size() <= 0: return false
 	
 	# find all cells that currently have the smallest size + proper type (if order matters)
 	var cells_valid : Array[CellData] = []
-	var smallest_size : int = cells.front().size
-	var smallest_type : CellData.Type = cells.front().type
-	for cell in cells:
+	var smallest_size : int = cells_sorted.front().size
+	var smallest_type : CellData.Type = cells_sorted.front().type
+	for cell in cells_sorted:
 		if cell.size > smallest_size: break
 		if cell.type != smallest_type and gen.dwarfs_come_before_giants: break
 		cells_valid.append(cell)

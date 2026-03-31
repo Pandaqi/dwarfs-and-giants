@@ -106,6 +106,7 @@ Anyway, this game made me add some pretty crucial improvements.
 * An **undo** even after failing the level. (It "re-opens" the puzzle for you to try again from that fail state.)
 * An easy way to customize the **fonts** used in the project. (This game has a clear fantasy theme, so I wanted to set matching fonts for it.)
 * A few useful shaders and sprites, such as **shadows** and **outlines**, which you need in almost any project anyway.
+* Randomized **background music**. (As in, I can set a few tracks and when one ends it picks a different one to play next.) I'm still not sure how much background music these puzzle games even _want_ or _need_, but at least I have the option now.
 
 The hint button was the hardest one. Because you have no guarantee that the player is aligned with the right solution. They might have taken 5 completely wrong moves, so how can you give the "next hint"?
 
@@ -119,4 +120,24 @@ It might surprise players the first time they see it, because the game suddenly 
 
 ## Conclusion
 
-@TODO
+As with the previous puzzle games, this is nothing groundbreaking. It's an educational puzzle game for the youngest of kids, with higher difficulty levels to also challenge older kids or those whose skill has grown enough over time. 
+
+So the most important metric is, or so I believe right now,
+
+* If the first level _teaches_ the skill well.
+* If later levels _explore_ that skill in different ways. (Advancing your understanding, challenging it, growing it.)
+* If the final level _tests_ all you learned in a puzzle that will be a fun challenge for any player of any age.
+
+And that it does! Kids only need to tap the right one, repeatedly. There's clear immediate feedback when you're wrong, and a reward when right. Comparing sizes and sorting smallest to largest is easily taught this way, while being a very useful skill. (There is no penalty, no other confusing system or rules, on the easiest difficulty, which would make this learning process more nebulous and less direct.)
+
+Higher difficulties explore the skill in different ways. By growing/shrinking those around you, that order now _changes_ on the fly. When you're allowed to tap them in any order, you now need to learn thinking in reverse: instead of "tap the smallest one", it's "tap such that the right one is smallest next".
+
+Finally, I've started doing this silly "click anything"-test with these puzzles, and on the highest difficulty it passes. That is, I can't solve those puzzles by just randomly clicking cells. Those puzzles are good enough that you actually need to think and make the right moves.
+
+The extra features of the framework (_hints, undo, etc_), and the special attention to fantasy visuals and theme, make the game look quite good. Better, at least, than many other games in this space. That's the _other_ important metric: the game needs to be attractive to kids and fun to play. (I keep changing my mind about which of the two is "most" important.) If it doesn't look fun and lively, then it doesn't matter how great the educational value is---nobody will actually play.
+
+And, so, I think this is a good educational tool and a good execution of the idea (in terms of visuals, gameplay, feeling). Let's end it on that positive note!
+
+Until the next devlog,
+
+Pandaqi

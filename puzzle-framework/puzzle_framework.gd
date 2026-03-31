@@ -28,14 +28,19 @@ var settings_by_id : Dictionary[String, PuzzleSetting] = {}
 @export var font_heading : FontFile = preload("res://puzzle-framework/ui/fonts/LilitaOne-Regular.ttf")
 @export var font_body : FontFile = preload("res://puzzle-framework/ui/fonts/LilitaOne-Regular.ttf")
 
+@export_group("Audio")
+@export var bg_music : Array[AudioStream] = []
+
 var commands : PuzzleCommands
 
 var puzzle_seed := 0
 var state := State.MENU
 var audio : PuzzleAudio
 var debug : PuzzleDebug
+
 var num_attempts := 0
-var num_attempts_same_puzzle := 0
+var num_attempts_same_puzzle := 1
+var num_attempts_per_difficulty : Dictionary[PuzzleDifficulty.Difficulty, int] = {}
 
 enum State
 {
@@ -65,6 +70,8 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	default_theme.default_font = font_body
 	ProjectSettings.set_setting("gui/theme/custom", default_theme)
+	
+	audio.load_background_music(bg_music)
 
 func go_back_to_menu() -> void:
 	change_state(State.MENU)
@@ -75,6 +82,9 @@ func prepare_attempt(retry := false) -> void:
 	num_attempts += 1
 	if retry: num_attempts_same_puzzle += 1
 	else: num_attempts_same_puzzle = 1
+	
+	if not (current_difficulty in num_attempts_per_difficulty): num_attempts_per_difficulty[current_difficulty] = 0
+	num_attempts_per_difficulty[current_difficulty] += 1
 
 func reload_current_puzzle() -> void:
 	prepare_attempt(true)
@@ -104,3 +114,7 @@ func finish_puzzle(player_won := false) -> void:
 
 func change_state(s:State) -> void:
 	state = s
+
+func get_num_attempts_current_difficulty() -> int:
+	if not (current_difficulty in num_attempts_per_difficulty): return 0
+	return num_attempts_per_difficulty[current_difficulty]

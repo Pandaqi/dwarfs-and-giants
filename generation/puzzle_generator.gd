@@ -5,8 +5,9 @@ var commands : PuzzleCommands
 var solution : Array[PuzzleCommand]
 
 var grid_size := Vector2i(3,3)
+var generation_multiplier_bounds := Vector2(1.0, 1.0)
 var num_turns_bounds := Vector2i(5,7) # this is automatically also the number of characters in the puzzle
-var cell_size_bounds := Vector2i(0,3)
+var cell_size_bounds := Vector2i(0,3) # the max value of this can be changed with a setting
 var place_multiple_of_same_prob := 0.25
 
 var dont_resize_when_not_needed := true
@@ -17,8 +18,18 @@ var enforce_size_bounds := false
 var allow_any_order := false
 var allow_diagonal_neighbors := false
 
+var grid_size_multiplier := 1.0
+
 func generate() -> void:
 	PuzzleSettings.apply_difficulty_properties(self)
+	
+	var rand_x := randf_range(generation_multiplier_bounds.x, generation_multiplier_bounds.y)
+	var rand_y := randf_range(generation_multiplier_bounds.x, generation_multiplier_bounds.y)
+	grid_size_multiplier = rand_x * rand_y
+	grid_size = Vector2i((Vector2(grid_size) * Vector2(rand_x, rand_y)).round())
+	
+	var num_scaling_levels := int(PuzzleSettings.get_value("num_scaling_levels", 4))
+	cell_size_bounds = Vector2i(0, num_scaling_levels - 1)
 	
 	var max_tries := 100
 	var num_tries := 0
@@ -43,6 +54,10 @@ func take_turns() -> void:
 	## Step 1 = Place dwarfs and giants of random sizes. 
 	## At the moment, their size is just a random integer that doesn't mean anything yet.
 	var num_turns := randi_range(num_turns_bounds.x, num_turns_bounds.y)
+	var mult := grid_size_multiplier * grid_size_multiplier
+	num_turns = roundi(num_turns * mult)
+	num_turns = mini(num_turns, grid_size.x * grid_size.y - 1)
+	
 	var empty_cells := grid.get_cells().duplicate(false)
 	empty_cells.shuffle()
 	

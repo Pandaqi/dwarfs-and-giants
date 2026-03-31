@@ -14,10 +14,14 @@
 [ext_resource type="Resource" uid="uid://b5h75jjc8yjpn" path="res://puzzle-framework/settings/common/setting_fullscreen.tres" id="10_w5xje"]
 [ext_resource type="Resource" uid="uid://c73mtja0x8ce0" path="res://puzzle-framework/settings/common/setting_tutorial.tres" id="11_ftmnh"]
 [ext_resource type="Resource" uid="uid://doyw0pbgpwr17" path="res://puzzle-framework/settings/common/setting_volume_game.tres" id="12_w5ts3"]
+[ext_resource type="Resource" uid="uid://blt5hmy8kqxw" path="res://puzzle-framework/settings/common/setting_volume_bg.tres" id="13_ndg7f"]
 [ext_resource type="Resource" uid="uid://bpx3va84mb70o" path="res://puzzle-framework/settings/common/setting_volume_ui.tres" id="13_rtetl"]
 [ext_resource type="Resource" uid="uid://d4eet8diiecrv" path="res://generation/settings/setting_numbers.tres" id="14_w5ts3"]
 [ext_resource type="Resource" uid="uid://cm3tglsy77rm3" path="res://generation/settings/setting_type_signs.tres" id="15_rtetl"]
 [ext_resource type="Resource" uid="uid://br3sfvdpxym1a" path="res://generation/settings/setting_vary_sprites.tres" id="16_rwo2v"]
+[ext_resource type="Resource" uid="uid://dn5cnecg2wke5" path="res://generation/settings/setting_num_scale_levels.tres" id="17_rtetl"]
+[ext_resource type="AudioStream" uid="uid://dqcd7u3n6vryq" path="res://main/calm-bg-tune.mp3" id="20_hsw23"]
+[ext_resource type="AudioStream" uid="uid://besxjhyldceq" path="res://main/viking-bg-tune.mp3" id="21_ndg7f"]
 
 [node name="PuzzleFramework" type="Node" unique_id=835186744]
 script = ExtResource("1_57jsw")
@@ -27,6 +31,7 @@ game_tagline = "Teaches Comparing & Sizes"
 favicon = "main/dwarfs-and-giants-favicon.png"
 menu_scene_custom = ExtResource("2_qky6c")
 difficulties = Array[ExtResource("3_tgv6f")]([ExtResource("2_swsbt"), ExtResource("4_swsbt"), ExtResource("5_xffpj"), ExtResource("6_tgv6f"), ExtResource("7_qky6c")])
-settings = Array[ExtResource("9_k0h2b")]([ExtResource("10_w5xje"), ExtResource("11_ftmnh"), ExtResource("12_w5ts3"), ExtResource("13_rtetl"), ExtResource("14_w5ts3"), ExtResource("15_rtetl"), ExtResource("16_rwo2v")])
+settings = Array[ExtResource("9_k0h2b")]([ExtResource("10_w5xje"), ExtResource("11_ftmnh"), ExtResource("12_w5ts3"), ExtResource("13_ndg7f"), ExtResource("13_rtetl"), ExtResource("14_w5ts3"), ExtResource("15_rtetl"), ExtResource("16_rwo2v"), ExtResource("17_rtetl")])
 font_heading = ExtResource("8_tgv6f")
 font_body = ExtResource("9_tgv6f")
+bg_music = Array[AudioStream]([ExtResource("20_hsw23"), ExtResource("21_ndg7f")])

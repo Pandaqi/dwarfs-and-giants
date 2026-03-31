@@ -1,11 +1,19 @@
 [gd_resource type="Resource" script_class="PuzzleDifficulty" format=3 uid="uid://rj58s4jxh5e2"]
 
 [ext_resource type="Script" uid="uid://7a03fervi8xj" path="res://puzzle-framework/puzzle_difficulty.gd" id="1_ga4ob"]
+[ext_resource type="Script" uid="uid://dbnf0revlghrs" path="res://puzzle-framework/tutorial/puzzle_tutorial_stage.gd" id="2_w63go"]
+[ext_resource type="AudioStream" uid="uid://80bsupj2mb3j" path="res://ui/tutorial/diff-hard.ogg" id="3_jlsko"]
+
+[sub_resource type="Resource" id="Resource_x1kk4"]
+script = ExtResource("2_w63go")
+audio = ExtResource("3_jlsko")
+metadata/_custom_type_script = "uid://dbnf0revlghrs"
 
 [resource]
 script = ExtResource("1_ga4ob")
 difficulty = 3
 feedback = "You can click dwarfs/giants in any order now."
+tutorial = Array[ExtResource("2_w63go")]([SubResource("Resource_x1kk4")])
 properties = Dictionary[String, Variant]({
 "allow_any_order": true,
 "dwarfs_come_before_giants": false,

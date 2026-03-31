@@ -5,21 +5,29 @@
 [ext_resource type="PackedScene" uid="uid://cijkym0l6s1nu" path="res://map/tiles/cell.tscn" id="2_pjrb6"]
 [ext_resource type="Script" uid="uid://haho73xq30yv" path="res://puzzle-framework/tools/camera.gd" id="3_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://q1jom8bphw8d" path="res://puzzle-framework/gameover/game_over_dialog.tscn" id="4_3wy1v"]
+[ext_resource type="Script" uid="uid://dpg60n5rlnn4j" path="res://puzzle-framework/tutorial/puzzle_tutorial.gd" id="5_4dugh"]
 [ext_resource type="PackedScene" uid="uid://2xygcypttdo7" path="res://puzzle-framework/game/game_menu.tscn" id="5_kfbq2"]
 
 [node name="Main" type="Node2D" unique_id=342323441]
 
 [node name="Background" parent="." unique_id=405929381 instance=ExtResource("1_kfbq2")]
 
-[node name="PuzzleVisualizer" type="Node2D" parent="." unique_id=881425632 node_paths=PackedStringArray("cam")]
+[node name="PuzzleVisualizer" type="Node2D" parent="." unique_id=881425632 node_paths=PackedStringArray("cam", "tutorial")]
 script = ExtResource("1_53q0u")
 cell_scene = ExtResource("2_pjrb6")
 cam = NodePath("../PuzzleCamera")
+tutorial = NodePath("../PuzzleTutorial")
 
 [node name="PuzzleCamera" type="Camera2D" parent="." unique_id=1594449240]
 script = ExtResource("3_xwkvk")
 edge_margin = Vector2(92, 92)
 metadata/_custom_type_script = "uid://haho73xq30yv"
+
+[node name="PuzzleTutorial" type="CanvasLayer" parent="." unique_id=828128560 node_paths=PackedStringArray("background", "container_2d")]
+script = ExtResource("5_4dugh")
+background = NodePath("../Background")
+container_2d = NodePath("../PuzzleVisualizer")
+metadata/_custom_type_script = "uid://dpg60n5rlnn4j"
 
 [node name="GameMenu" parent="." unique_id=950523672 instance=ExtResource("5_kfbq2")]
 allow_undo = true

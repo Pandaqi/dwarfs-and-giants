@@ -23,6 +23,6 @@ static func apply_difficulty_properties(obj) -> void:
 static func has_settings() -> bool:
 	return PuzzleFramework.settings.size() > 0
 
-static func get_value(key:String) -> Variant:
-	if not (key in PuzzleFramework.settings_by_id): return false
+static func get_value(key:String, def:Variant = false) -> Variant:
+	if not (key in PuzzleFramework.settings_by_id): return def
 	return PuzzleFramework.settings_by_id[key].get_value_safe()

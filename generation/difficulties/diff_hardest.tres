@@ -1,17 +1,26 @@
 [gd_resource type="Resource" script_class="PuzzleDifficulty" format=3 uid="uid://cg40rxof8sifw"]
 
 [ext_resource type="Script" uid="uid://7a03fervi8xj" path="res://puzzle-framework/puzzle_difficulty.gd" id="1_6uw78"]
+[ext_resource type="Script" uid="uid://dbnf0revlghrs" path="res://puzzle-framework/tutorial/puzzle_tutorial_stage.gd" id="2_ldw5f"]
+[ext_resource type="AudioStream" uid="uid://dox27qoqkgc4" path="res://ui/tutorial/diff-hardest.ogg" id="3_3snvw"]
+
+[sub_resource type="Resource" id="Resource_1qv42"]
+script = ExtResource("2_ldw5f")
+audio = ExtResource("3_3snvw")
+metadata/_custom_type_script = "uid://dbnf0revlghrs"
 
 [resource]
 script = ExtResource("1_6uw78")
 difficulty = 4
-feedback = "Dwarfs/Giants will also shrink/grow diagonal neighbors ( = at an angle)."
+feedback = "Shrinking and growing now also happen to diagonal neighbors. (That is, people standing around them at an angle.)"
+tutorial = Array[ExtResource("2_ldw5f")]([SubResource("Resource_1qv42")])
 properties = Dictionary[String, Variant]({
 "allow_any_order": true,
 "allow_diagonal_neighbors": true,
 "dwarfs_come_before_giants": false,
 "dwarfs_shrink_neighbors": true,
 "enforce_size_bounds": true,
+"generation_multiplier_bounds": Vector2(1, 1.3),
 "giants_grow_neighbors": true,
 "grid_size": Vector2i(5, 5),
 "num_turns_bounds": Vector2i(21, 24)

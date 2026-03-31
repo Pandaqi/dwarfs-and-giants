@@ -1,10 +1,20 @@
 [gd_resource type="Resource" script_class="PuzzleDifficulty" format=3 uid="uid://dam3boivlg273"]
 
 [ext_resource type="Script" uid="uid://7a03fervi8xj" path="res://puzzle-framework/puzzle_difficulty.gd" id="1_13r8w"]
+[ext_resource type="Script" uid="uid://dbnf0revlghrs" path="res://puzzle-framework/tutorial/puzzle_tutorial_stage.gd" id="2_gnrw5"]
+[ext_resource type="AudioStream" uid="uid://bkgtm8np4n8qw" path="res://ui/tutorial/diff-easiest.ogg" id="3_lk5x5"]
+
+[sub_resource type="Resource" id="Resource_ydyyk"]
+script = ExtResource("2_gnrw5")
+audio = ExtResource("3_lk5x5")
+object_focus_index = 0
+object_focus_is_pointer = true
+metadata/_custom_type_script = "uid://dbnf0revlghrs"
 
 [resource]
 script = ExtResource("1_13r8w")
-feedback = "Click the smallest person each time. If some are equally big, you get to choose!"
+feedback = "Click the smallest dwarf or giant. Do this until all of them are gone!"
+tutorial = Array[ExtResource("2_gnrw5")]([SubResource("Resource_ydyyk")])
 properties = Dictionary[String, Variant]({
 "allow_any_order": false,
 "dwarfs_come_before_giants": false,

@@ -30,6 +30,7 @@ var difficulty_to_label : Dictionary[Difficulty, String] = {
 @export var button_label : String
 @export var button_icon : Texture2D
 @export var feedback : String = ""
+@export var tutorial : Array[PuzzleTutorialStage] = []
 @export var properties : Dictionary[String, Variant] = {}
 
 func get_button_label() -> String:

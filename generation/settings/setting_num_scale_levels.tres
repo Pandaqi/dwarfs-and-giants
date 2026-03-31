@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PuzzleSettingSlider" format=3 uid="uid://dn5cnecg2wke5"]
+
+[ext_resource type="Script" uid="uid://bveqd8k261myk" path="res://puzzle-framework/settings/setting_slider.gd" id="1_scnmp"]
+
+[resource]
+script = ExtResource("1_scnmp")
+min_value = 3.0
+key = "num_scaling_levels"
+label = "Number of Scaling Levels"
+default = 4
+tooltip = "A higher number means easier puzzles but subtler visual differences in scaling."
+metadata/_custom_type_script = "uid://bveqd8k261myk"

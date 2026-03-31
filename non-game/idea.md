@@ -35,10 +35,11 @@ HOW TO GENERATE?
 
 ## Finishing
 
-* SETTING: Control the number of "different scale levels", because my code will work just fine with any number of them.
-* HARDEST DIFFICULTY: Allow a range of grid sizes?
-* Tutorial (we need a unique one per level, to explain the next rule; maybe also show an IMAGE of this rule at the sides of the map?)
-  * Make this a built-in feature of the `PuzzleTutorial` system => showing images around the map and/or like pop-ups
+* Stronger feedback on TOO BIG or TOO SMALL? Is that clear enough now?
+
+Tutorial Images:
+
+* Do we need these? Could add a few in the background ...
 
 
 ## Discarded
