@@ -78,12 +78,13 @@ func _on_cell_clicked(c:Cell) -> void:
 		return
 	
 	busy = true
-	
-	print("Cell Clicked!")
+
 	commands.start_new_turn()
 	await commands.execute_command(CommandTurn.new(c.data))
 
-func _on_commands_finished() -> void:
+func _on_commands_finished(cmd:PuzzleCommand) -> void:
+	if not (cmd is CommandTurn): return
+	
 	# check if we've lost (some dwarf/giant became too big)
 	var cells_left := gen.get_cells_with_type()
 	if gen.enforce_size_bounds:
@@ -105,7 +106,7 @@ func _on_commands_finished() -> void:
 func goto_game_over(we_won := false) -> void:
 	# wait for the dying animation
 	if not we_won: 
-		await get_tree().create_timer(0.8).timeout
+		await get_tree().create_timer(0.925).timeout
 	
 	PuzzleFramework.finish_puzzle(we_won)
 	destroy()

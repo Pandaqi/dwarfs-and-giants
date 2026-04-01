@@ -27,7 +27,7 @@ var object_focus : Node2D
 @export var image_foreground : Texture2D
 
 ## how we transition into the next stage (wait X seconds, don't wait, etc)
-@export var transition := Transition.WAIT_UNTIL_COMPLETION
+@export var transition := Transition.NONE
 @export var duration := 0.0
 
 ## our custom game can set a list of objects to focus on
@@ -41,7 +41,7 @@ var object_focus : Node2D
 
 ## whether it should automatically be removed when tutorial is done cycling through its stages
 ## or stay around forever as you play
-@export var persistent := false
+@export var persistent := true
 
 @export var hide_after_x_attempts := 0
 @export var hide_after_x_retries := 3

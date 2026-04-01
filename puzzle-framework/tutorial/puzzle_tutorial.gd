@@ -4,10 +4,12 @@ class_name PuzzleTutorial
 @export var background : CanvasLayer
 @export var background_anchor := Vector2(0.25, 0.5)
 @export var background_scale := 1.0
+@export var background_modulate := Color.WHITE
 
 @export var foreground : CanvasLayer
 @export var foreground_anchor := Vector2(0.5, 0.5)
 @export var foreground_scale := 1.0
+@export var foreground_modulate := Color.WHITE
 
 @export var container_2d : Node2D
 
@@ -128,6 +130,7 @@ func add_to_background(t:Texture2D) -> Sprite2D:
 	background.add_child(s)
 	s.set_position(get_position_in_viewport(background_anchor))
 	s.set_scale(Vector2.ONE * background_scale)
+	s.modulate = background_modulate
 	return s
 
 func add_to_foreground(t:Texture2D) -> Sprite2D:
@@ -136,4 +139,5 @@ func add_to_foreground(t:Texture2D) -> Sprite2D:
 	foreground.add_child(s)
 	s.set_position(get_position_in_viewport(foreground_anchor))
 	s.set_scale(Vector2.ONE * foreground_scale)
+	s.modulate = foreground_modulate
 	return s

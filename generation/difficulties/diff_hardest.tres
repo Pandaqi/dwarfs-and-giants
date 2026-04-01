@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://7a03fervi8xj" path="res://puzzle-framework/puzzle_difficulty.gd" id="1_6uw78"]
 [ext_resource type="Script" uid="uid://dbnf0revlghrs" path="res://puzzle-framework/tutorial/puzzle_tutorial_stage.gd" id="2_ldw5f"]
 [ext_resource type="AudioStream" uid="uid://dox27qoqkgc4" path="res://ui/tutorial/diff-hardest.ogg" id="3_3snvw"]
+[ext_resource type="Texture2D" uid="uid://w14vno6y5njq" path="res://ui/tutorial/tutorial-diff-hardest.png" id="4_1qv42"]
 
 [sub_resource type="Resource" id="Resource_1qv42"]
 script = ExtResource("2_ldw5f")
 audio = ExtResource("3_3snvw")
+image_background = ExtResource("4_1qv42")
 metadata/_custom_type_script = "uid://dbnf0revlghrs"
 
 [resource]

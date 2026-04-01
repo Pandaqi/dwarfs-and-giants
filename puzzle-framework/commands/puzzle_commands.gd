@@ -20,10 +20,10 @@ var solution : Array[PuzzleCommand] = []
 ## If we allow giving a hint at any moment, we need to manually track the turn number and set it here too
 var solution_index := -1
 
-signal do_started()
-signal do_finished()
-signal undo_started()
-signal undo_finished()
+signal do_started(cmd:PuzzleCommand)
+signal do_finished(cmd:PuzzleCommand)
+signal undo_started(commands:Array[PuzzleCommand])
+signal undo_finished(commands:Array[PuzzleCommand])
 
 func has_turns() -> bool:
 	return count() > 0
@@ -56,12 +56,12 @@ func delete_last_turn() -> void:
 
 func execute_command(cmd:PuzzleCommand) -> void:
 	busy = true
-	do_started.emit()
+	do_started.emit(cmd)
 	
 	register_command(cmd)
 	await cmd.do(self)
 	
-	do_finished.emit()
+	do_finished.emit(cmd)
 	busy = false
 
 func undo_last_turn() -> void:
@@ -69,19 +69,19 @@ func undo_last_turn() -> void:
 	if is_busy(): return
 	
 	busy = true
-	undo_started.emit()
-	
-	play_undo_audio()
 	
 	var commands : Array[PuzzleCommand] = get_current_turn()
 	commands.reverse()
 	
+	undo_started.emit(commands)
+	play_undo_audio()
+
 	for cmd in commands:
 		await cmd.undo(self)
 	
 	delete_last_turn()
 	
-	undo_finished.emit()
+	undo_finished.emit(commands)
 	busy = false
 
 func undo_all_turns() -> void:

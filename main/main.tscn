@@ -26,6 +26,9 @@ metadata/_custom_type_script = "uid://haho73xq30yv"
 [node name="PuzzleTutorial" type="CanvasLayer" parent="." unique_id=828128560 node_paths=PackedStringArray("background", "container_2d")]
 script = ExtResource("5_4dugh")
 background = NodePath("../Background")
+background_anchor = Vector2(0.15, 0.5)
+background_scale = 0.75
+background_modulate = Color(1, 1, 1, 0.5411765)
 container_2d = NodePath("../PuzzleVisualizer")
 metadata/_custom_type_script = "uid://dpg60n5rlnn4j"
 

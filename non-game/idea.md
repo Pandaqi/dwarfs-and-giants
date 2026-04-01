@@ -33,15 +33,6 @@ HOW TO GENERATE?
 # To-Do
 
 
-## Finishing
-
-* Stronger feedback on TOO BIG or TOO SMALL? Is that clear enough now?
-
-Tutorial Images:
-
-* Do we need these? Could add a few in the background ...
-
-
 ## Discarded
 
 ### Other Algorithm
